@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="container py-5">
-    <div class="card border-0 rounded-4 shadow-lg" style="background-color: rgba(255, 255, 255, 0.08);">
+    <div class="card border-0 rounded-5 shadow-lg" style="background-color: rgba(255, 255, 255, 0.08);">
         <div class="card-body text-white">
-            <h2 class="fw-bold mb-4">Edit User</h2>
+            <h2 class="fw-bold mb-3 ms-2" style="font-size: 25px;">Edit User</h2>
 
             @if ($errors->any())
                 <div class="alert alert-danger rounded-3">
