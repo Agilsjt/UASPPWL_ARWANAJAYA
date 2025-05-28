@@ -53,7 +53,7 @@
                                 <td>{{ $employee->position ?? '-' }}</td>
                             </tr>
                             <tr>
-                                <th class="text-start">Skills</th>
+                                <th class="text-start">Keahlian</th>
                                 <td>
                                     @if ($employee->skills->count())
                                         @foreach ($employee->skills as $skill)

@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container py-5">
-    <div class="card border-0 rounded-4 shadow-lg" style="background-color: rgba(255, 255, 255, 0.1);">
+    <div class="card border-0 rounded-5 shadow-lg" style="background-color: rgba(255, 255, 255, 0.1);">
         <div class="card-body text-white">
             {{-- Header --}}
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="fw-bold mb-0">Daftar Pegawai</h2>
+                <h2 class="fw-bold mb-0 ms-2" style="font-size: 25px;">Daftar Pegawai</h2>
 
                 @can('create-employee')
                 <a href="{{ route('employee.create') }}" class="btn btn-success px-4 fw-semibold rounded-pill shadow-sm">
@@ -35,7 +35,7 @@
                             <th>No. HP</th>
                             <th>Alamat</th>
                             <th>Jabatan</th>
-                            <th>Skills</th>
+                            <th>Keahlian</th>
                             <th style="width: 220px;">Aksi</th>
                         </tr>
                     </thead>
