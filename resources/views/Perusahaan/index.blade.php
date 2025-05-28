@@ -2,33 +2,35 @@
 
 @section('content')
 <div class="container py-5">
-    <div class="card border-0 rounded-4 shadow-lg" style="background-color: rgba(255, 255, 255, 0.1);">
+    <div class="card border-0 rounded-5 shadow-lg" style="background-color: rgba(255, 255, 255, 0.1);">
         <div class="card-body text-white">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="fw-bold mb-0">Daftar Perusahaan</h2>
+                <h2 class="fw-bold mb-0">Profil Perusahaan</h2>
                 <a href="{{ route('perusahaan.create') }}" class="btn btn-success px-4 fw-semibold rounded-pill shadow-sm">
-                    + Tambah Perusahaan
+                    + Tambah Profil
                 </a>
             </div>
 
-            {{-- Search Form --}}
+            {{-- Form Pencarian --}}
             <form action="{{ route('perusahaan.index') }}" method="GET" class="mb-4">
                 <div class="input-group">
-                    <input type="text" name="search" class="form-control bg-white bg-opacity-75 text-dark border-0" placeholder="Cari Perusahaan..." value="{{ request('search') }}">
+                    <input type="text" name="search" class="form-control bg-white bg-opacity-75 text-dark border-0"
+                        placeholder="Cari Profil..." value="{{ request('search') }}">
                     <button class="btn btn-outline-light fw-semibold" type="submit">Cari</button>
                 </div>
             </form>
 
-            {{-- Table --}}
+            {{-- Tabel Daftar Perusahaan --}}
             <div class="table-responsive rounded-4 overflow-hidden">
                 <table class="table table-hover text-white align-middle text-center m-0">
                     <thead class="table-dark">
                         <tr>
                             <th>Logo</th>
-                            <th>Nama Perusahaan</th>
+                            <th>Nama</th>
                             <th>Email</th>
                             <th>Telepon</th>
                             <th>Alamat</th>
+                            <th>Judul Deskripsi</th>
                             <th>Deskripsi</th>
                             <th style="width: 220px;">Aksi</th>
                         </tr>
@@ -37,18 +39,20 @@
                         @forelse ($perusahaans as $perusahaan)
                             <tr class="table-row-hover">
                                 <td>
-                                    @if ($perusahaan->logo)
+                                    @if ($perusahaan->logo && Storage::disk('public')->exists($perusahaan->logo))
                                         <img src="{{ asset('storage/' . $perusahaan->logo) }}" alt="Logo"
-                                            class="rounded-circle border border-white shadow-sm" width="50" height="50" style="object-fit: cover;">
+                                            class="rounded-circle border border-white shadow-sm"
+                                            width="50" height="50" style="object-fit: cover;">
                                     @else
-                                        <span class="text-muted">Tidak ada logo</span>
+                                        <span class="text-muted fst-italic">Tidak ada logo</span>
                                     @endif
                                 </td>
                                 <td class="text-start">{{ $perusahaan->nama_perusahaan }}</td>
                                 <td class="text-start">{{ $perusahaan->email }}</td>
                                 <td>{{ $perusahaan->telepon }}</td>
                                 <td class="text-start">{{ $perusahaan->alamat }}</td>
-                                <td class="text-start">{{ $perusahaan->deskripsi }}</td>
+                                <td class="text-start">{{ $perusahaan->judul_deskripsi ?? '-' }}</td> <!-- Kolom Judul Deskripsi -->
+                                <td class="text-start">{{ \Illuminate\Support\Str::limit($perusahaan->deskripsi, 50) }}</td>
                                 <td>
                                     <a href="{{ route('perusahaan.show', $perusahaan->id) }}" class="btn btn-info btn-sm me-1">Detail</a>
                                     <a href="{{ route('perusahaan.edit', $perusahaan->id) }}" class="btn btn-warning btn-sm me-1">Edit</a>
@@ -62,14 +66,14 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="7" class="text-center text-muted py-4">Tidak ada data perusahaan yang ditemukan</td>
+                                <td colspan="8" class="text-center text-muted py-4">Tidak ada data perusahaan ditemukan</td>
                             </tr>
                         @endforelse
                     </tbody>
                 </table>
             </div>
 
-            {{-- Pagination --}}
+            {{-- Paginasi --}}
             <div class="mt-4 d-flex justify-content-center">
                 {{ $perusahaans->withQueryString()->links('pagination::bootstrap-5') }}
             </div>
@@ -78,6 +82,7 @@
 </div>
 @endsection
 
+@push('styles')
 <style>
     .table-row-hover:hover {
         background-color: rgba(255, 255, 255, 0.05);
@@ -97,3 +102,4 @@
         border-color: #ccc;
     }
 </style>
+@endpush

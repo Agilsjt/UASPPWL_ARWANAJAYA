@@ -192,7 +192,7 @@
         <li><a href="{{ route('dashboard') }}" class="{{ Request::routeIs('dashboard') ? 'active' : '' }}">Dashboard</a></li>
         <li><a href="{{ route('employee.index') }}" class="{{ Request::routeIs('employee.*') ? 'active' : '' }}">Kelola Pegawai</a></li>
         <li><a href="{{ route('skill.index') }}" class="{{ Request::routeIs('skill.*') ? 'active' : '' }}">Kelola Skill</a></li>
-        <li><a href="#">Kelola Profil Perusahaan</a></li>
+        <li><a href="{{ route('perusahaan.index') }}">Kelola Profil Perusahaan</a></li>
         <li><a href="#">Kelola Layanan</a></li>
         <li><a href="{{ route('user.index') }}" class="{{ Request::routeIs('user.*') ? 'active' : '' }}">Kelola User</a></li>
       </ul>

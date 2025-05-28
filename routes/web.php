@@ -5,7 +5,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
-
+use App\Http\Controllers\PerusahaanController;
 use Illuminate\Support\Facades\Route;
 
 // Route homepage
@@ -29,6 +29,7 @@ Route::middleware('auth')->group(function () {
 Route::resource('employee', EmployeeController::class)->middleware('auth');
 Route::resource('skill', SkillController::class)->middleware('auth');
 Route::resource('user', UserController::class)->middleware('auth');
+Route::resource('perusahaan', PerusahaanController::class)->middleware('auth');
 
 // Authentication routes
 require __DIR__.'/auth.php';

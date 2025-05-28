@@ -4,7 +4,7 @@
 <div class="container py-5">
     <div class="card border-0 rounded-4 shadow-lg" style="background-color: rgba(255, 255, 255, 0.08);">
         <div class="card-body text-white">
-            <h2 class="fw-bold mb-4">Tambah Perusahaan</h2>
+            <h2 class="fw-bold mb-4">Edit Perusahaan</h2>
 
             {{-- Validasi Error --}}
             @if ($errors->any())
@@ -17,30 +17,30 @@
                 </div>
             @endif
 
-            <form action="{{ route('perusahaan.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('perusahaan.update', $perusahaan->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
 
-                {{-- Nama Perusahaan --}}
+                {{-- Nama --}}
                 <div class="mb-3">
                     <label for="nama_perusahaan" class="form-label">Nama Perusahaan</label>
                     <input type="text" class="form-control bg-white bg-opacity-75 text-dark border-0"
                         id="nama_perusahaan" name="nama_perusahaan" required maxlength="255"
-                        value="{{ old('nama_perusahaan') }}">
+                        value="{{ old('nama_perusahaan', $perusahaan->nama_perusahaan) }}">
                 </div>
-
                 {{-- Judul Deskripsi --}}
                 <div class="mb-3">
                     <label for="judul_deskripsi" class="form-label">Judul Deskripsi</label>
                     <input type="text" class="form-control bg-white bg-opacity-75 text-dark border-0"
                         id="judul_deskripsi" name="judul_deskripsi" maxlength="255"
-                        value="{{ old('judul_deskripsi') }}">
+                        value="{{ old('judul_deskripsi', $perusahaan->judul_deskripsi) }}">
                 </div>
 
                 {{-- Deskripsi --}}
                 <div class="mb-3">
                     <label for="deskripsi" class="form-label">Deskripsi</label>
                     <textarea class="form-control bg-white bg-opacity-75 text-dark border-0"
-                        id="deskripsi" name="deskripsi" rows="3" maxlength="500">{{ old('deskripsi') }}</textarea>
+                        id="deskripsi" name="deskripsi" rows="3" maxlength="500">{{ old('deskripsi', $perusahaan->deskripsi) }}</textarea>
                 </div>
 
                 <div class="row mb-3">
@@ -49,7 +49,7 @@
                         <label for="alamat" class="form-label">Alamat</label>
                         <input type="text" class="form-control bg-white bg-opacity-75 text-dark border-0"
                             id="alamat" name="alamat" maxlength="255"
-                            value="{{ old('alamat') }}">
+                            value="{{ old('alamat', $perusahaan->alamat) }}">
                     </div>
 
                     {{-- Telepon --}}
@@ -57,7 +57,7 @@
                         <label for="telepon" class="form-label">Telepon</label>
                         <input type="text" class="form-control bg-white bg-opacity-75 text-dark border-0"
                             id="telepon" name="telepon" maxlength="20"
-                            value="{{ old('telepon') }}">
+                            value="{{ old('telepon', $perusahaan->telepon) }}">
                     </div>
                 </div>
 
@@ -66,20 +66,26 @@
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control bg-white bg-opacity-75 text-dark border-0"
                         id="email" name="email" maxlength="255"
-                        value="{{ old('email') }}">
+                        value="{{ old('email', $perusahaan->email) }}">
                 </div>
 
                 {{-- Logo --}}
                 <div class="mb-4">
                     <label for="logo" class="form-label">Logo Perusahaan</label>
-                    <input class="form-control bg-white bg-opacity-75 text-dark border-0" type="file"
-                        id="logo" name="logo" accept="image/*">
+                    <input class="form-control bg-white bg-opacity-75 text-dark border-0" type="file" id="logo" name="logo" accept="image/*">
+                    @if ($perusahaan->logo && Storage::disk('public')->exists($perusahaan->logo))
+                        <div class="mt-2">
+                            <small class="text-light d-block">Logo saat ini:</small>
+                            <img src="{{ asset('storage/' . $perusahaan->logo) }}" alt="Logo Perusahaan"
+                                class="img-thumbnail mt-2" style="max-height: 100px;">
+                        </div>
+                    @endif
                 </div>
 
                 {{-- Tombol --}}
                 <div class="d-flex justify-content-between">
                     <a href="{{ route('perusahaan.index') }}" class="btn btn-outline-light rounded-pill px-4">Batal</a>
-                    <button type="submit" class="btn btn-success rounded-pill px-4 fw-semibold">Simpan</button>
+                    <button type="submit" class="btn btn-success rounded-pill px-4 fw-semibold">Update</button>
                 </div>
             </form>
         </div>

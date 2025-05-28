@@ -20,7 +20,7 @@ class EmployeeController extends Controller
                       ->orWhere('email', 'like', "%{$request->search}%")
                       ->orWhere('position', 'like', "%{$request->search}%");
             })
-            ->paginate(5);
+            ->paginate(10);
 
         return view('employee.index', compact('employees'));
     }
