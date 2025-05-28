@@ -70,44 +70,84 @@
 
         .sidebar {
             position: fixed;
-            top: -43px; 
+            top: 0;
             left: 0;
             width: 250px;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(8px);
-            padding-top: 70px;
-            z-index: 900;
-            overflow-y: auto;
-            transition: transform 0.3s ease;
+            background: rgba(20, 20, 20, 0.96);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+            box-shadow: 2px 0 12px rgba(0,0,0,0.10);
+            transition: transform 0.3s;
         }
-
-        .sidebar.closed {
-            transform: translateX(-100%);
+        .sidebar-header {
+            border-bottom: 1px solid rgba(255,255,255,0.07);
         }
-
-        .sidebar a {
-            color: #f1f1f1;
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+        .sidebar-menu a {
             display: block;
-            padding: 12px 20px;
+            color: #f1f1f1;
+            padding: 12px 24px;
             text-decoration: none;
+            border-radius: 0px;
+            transition: background 0.2s, color 0.2s;
             font-weight: 500;
-            transition: background 0.3s;
+        }
+        .sidebar-menu a.active {
+            background: #0d6efd;
+            color: #fff;
+        }
+        .sidebar-menu a:hover {
+            background: #021839;
+            color: #fff;
+        }
+        .sidebar-logout {
+            border-top: 1px solid rgba(255,255,255,0.07);
+        }
+        .logout-btn {
+            background: rgba(255,255,255,0.10);
+            border: 1px solid #fff;
+            color: #fff;
+            border-radius: 5px;
+            padding: 8px 0;
+            transition: background 0.2s, color 0.2s;
+        }
+        .logout-btn:hover {
+            background: #fff;
+            color: #0d6efd;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100vw;
+                height: auto;
+                position: fixed;
+                top: 0;
+                left: 0;
+                transform: translateY(-100%);
+                transition: transform 0.3s;
+            }
+            .sidebar.open {
+                transform: translateY(0);
+            }
         }
 
-        .sidebar a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
 
         /* Main Content */
         .main-content {
-            margin-top: 5px;
-            margin-left: 220px;
-            padding: 30px;
-            min-height: calc(100vh - 56px);
-            color: #f8f9fa;
-            transition: margin-left 0.3s ease;
+        margin-left: 230px;
+        padding: 30px;
+        min-height: 100vh;
+        transition: margin-left 0.3s ease;
+        color: #f8f9fa;
         }
+        .main-content.full-width {
+            margin-left: 0;
+        }
+
         /* Adjust main content when sidebar closed */
         .main-content.full-width {
             margin-left: 0;
@@ -115,7 +155,7 @@
         .modal-content.custom-dark {
             backdrop-filter: blur(8px);
             background: rgba(0, 0, 0, 0.6);
-            color: #fff;
+            color: #ffffff;
             border-radius: 12px;
         }
 
@@ -177,28 +217,30 @@
 
     <!-- Sidebar -->
     <div class="sidebar d-flex flex-column" id="sidebar">
-        <div class="d-flex justify-content-between align-items-center px-3">
+        <div class="sidebar-header d-flex justify-content-between align-items-center px-3 py-3">
             <div class="text-white fw-bold fs-5">PT ARWANA JAYA</div>
-        <button class="close-btn ms-auto" id="sidebarToggle" aria-label="Close sidebar" title="Close sidebar"></button>
-
+            <button class="close-btn ms-auto" id="sidebarToggle" aria-label="Close sidebar" title="Close sidebar"></button>
         </div>
         <!-- Menu navigasi -->
-        <a href="{{ route('dashboard') }}">Dashboard</a>
-        <a href="{{ route('employee.index') }}">Kelola Pegawai</a>
-        <a href="{{ route('skill.index') }}">Kelola Skill</a>
-        <a href="#">Kelola Profil Perusahaan</a>
-        <a href="#">Kelola Layanan</a>
-        <a href="{{ route('user.index') }}">Kelola User</a>
-
+        <nav class="flex-grow-1">
+            <ul class="sidebar-menu list-unstyled mb-0">
+                <li><a href="{{ route('dashboard') }}" class="{{ Request::routeIs('dashboard') ? 'active' : '' }}">Dashboard</a></li>
+                <li><a href="{{ route('employee.index') }}" class="{{ Request::routeIs('employee.*') ? 'active' : '' }}">Kelola Pegawai</a></li>
+                <li><a href="{{ route('skill.index') }}" class="{{ Request::routeIs('skill.*') ? 'active' : '' }}">Kelola Skill</a></li>
+                <li><a href="#">Kelola Profil Perusahaan</a></li>
+                <li><a href="#">Kelola Layanan</a></li>
+                <li><a href="{{ route('user.index') }}" class="{{ Request::routeIs('user.*') ? 'active' : '' }}">Kelola User</a></li>
+            </ul>
+        </nav>
         <!-- Logout di bawah -->
-        <div class="mt-auto px-3 pb-18">
+        <div class="sidebar-logout px-3 py-3 mt-auto">
             <form method="POST" action="{{ route('logout') }}" class="w-100">
                 @csrf
-                <button type="submit" class="logout-btn w-100">
-                    Logout
-                </button>
+                <button type="submit" class="logout-btn w-100">Logout</button>
             </form>
         </div>
+    </div>
+
 
     </div>
 

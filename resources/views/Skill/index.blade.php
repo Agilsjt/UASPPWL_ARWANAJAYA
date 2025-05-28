@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="container py-5">
-    <div class="card border-0 rounded-4 shadow-lg" style="background-color: rgba(255, 255, 255, 0.1);">
+    <div class="card border-0 rounded-5 shadow-lg" style="background-color: rgba(255, 255, 255, 0.1);">
         <div class="card-body text-white">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="fw-bold mb-0">Daftar Skill</h2>
+                <h2 class="fw-bold mb-0 ms-2" style="font-size: 25px;">Daftar Skill</h2>
                 <a href="{{ route('skill.create') }}" class="btn btn-success px-4 fw-semibold rounded-pill shadow-sm">
                     + Tambah Skill
                 </a>
