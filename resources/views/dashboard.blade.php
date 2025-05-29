@@ -48,6 +48,30 @@
                 </div>
             </div>
         </div>
+
+        <!-- Company Profile -->
+        <div class="col-md-6">
+            <div class="glass-card border-start border-4 border-info">
+                <div class="card-body">
+                    <h5 class="text-uppercase fw-semibold text-info">Profil Perusahaan</h5>
+                    <h2 class="fw-bold mb-2">Kelola</h2>
+                    <p class="mb-3">Lihat dan edit profil perusahaan</p>
+                    <a href="{{ route('perusahaan.index') }}" class="btn btn-outline-light btn-sm px-4">Lihat</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service Management -->
+        <div class="col-md-6">
+            <div class="glass-card border-start border-4 border-danger">
+                <div class="card-body">
+                    <h5 class="text-uppercase fw-semibold text-warning">Layanan</h5>
+                    <h2 class="fw-bold mb-2">{{ $userCount ?? 0 }}</h2>
+                    <p class="mb-3">Jumlah layanan yang disediakan perusahaan</p>
+                    <a href="#" class="btn btn-outline-light btn-sm px-4">Lihat</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
@@ -60,6 +84,7 @@
         padding: 1.5rem;
         box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
     }
 
     .glass-card:hover {
@@ -74,6 +99,7 @@
         border-radius: 1rem;
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.25);
+        z-index: 10;
     }
 
     @keyframes fadeInOutBubble {
@@ -93,4 +119,27 @@
             transform: translateY(-30px);
         }
     }
+
+    @media (max-width: 768px) {
+        .container {
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+        }
+
+        .glass-card {
+            padding: 1.25rem;
+        }
+
+        .halo-bubble {
+            font-size: 14px;
+            padding: 8px 16px;
+            max-width: 90vw;
+            text-align: center;
+        }
+
+        .display-5 {
+            font-size: 2rem;
+        }
+    }
 </style>
+
