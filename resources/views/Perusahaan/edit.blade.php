@@ -69,6 +69,14 @@
                         value="{{ old('email', $perusahaan->email) }}">
                 </div>
 
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status</label>
+                    <select class="form-select bg-white bg-opacity-75 text-dark border-0" id="status" name="status" required>
+                        <option value="aktif" {{ old('status', $perusahaan->status) === 'aktif' ? 'selected' : '' }}>Aktif</option>
+                        <option value="nonaktif" {{ old('status', $perusahaan->status) === 'nonaktif' ? 'selected' : '' }}>Nonaktif</option>
+                    </select>
+                </div>
+
                 {{-- Logo --}}
                 <div class="mb-4">
                     <label for="logo" class="form-label">Logo Perusahaan</label>
@@ -81,6 +89,7 @@
                         </div>
                     @endif
                 </div>
+
 
                 {{-- Tombol --}}
                 <div class="d-flex justify-content-between">
@@ -95,6 +104,11 @@
 
 @push('styles')
 <style>
+    .form-select {
+    padding: 0.6rem 1rem;
+    border-radius: 0.5rem;
+    }
+
     .form-control:focus,
     .form-select:focus {
         box-shadow: none;

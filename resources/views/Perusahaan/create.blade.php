@@ -69,6 +69,15 @@
                         value="{{ old('email') }}">
                 </div>
 
+                {{-- Status --}}
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status</label>
+                    <select class="form-select bg-white bg-opacity-75 text-dark border-0" id="status" name="status">
+                        <option value="aktif" {{ old('status', 'aktif') === 'aktif' ? 'selected' : '' }}>Aktif</option>
+                        <option value="nonaktif" {{ old('status', 'aktif') === 'nonaktif' ? 'selected' : '' }}>Nonaktif</option>
+                    </select>
+                </div>
+
                 {{-- Logo --}}
                 <div class="mb-4">
                     <label for="logo" class="form-label">Logo Perusahaan</label>

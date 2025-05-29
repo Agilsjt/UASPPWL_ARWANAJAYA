@@ -43,6 +43,7 @@ class PerusahaanController extends Controller
             'telepon' => 'nullable|string|max:20',
             'email' => 'nullable|email|max:255',
             'logo' => 'nullable|image|max:2048',
+            'status' => 'required|in:aktif,nonaktif',  // validasi status enum
         ]);
 
         $data = $request->all();
@@ -79,6 +80,7 @@ class PerusahaanController extends Controller
             'telepon' => 'nullable|string|max:20',
             'email' => 'nullable|email|max:255',
             'logo' => 'nullable|image|max:2048',
+            'status' => 'required|in:aktif,nonaktif',  // validasi status enum
         ]);
 
         $data = $request->all();

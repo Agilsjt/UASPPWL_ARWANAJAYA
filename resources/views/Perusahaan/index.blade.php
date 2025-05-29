@@ -33,6 +33,7 @@
                             <th>Alamat</th>
                             <th>Judul Deskripsi</th>
                             <th>Deskripsi</th>
+                            <th>Status</th> {{-- Tambah status --}}
                             <th style="width: 220px;">Aksi</th>
                         </tr>
                     </thead>
@@ -54,6 +55,13 @@
                             <td class="text-start">{{ $perusahaan->alamat }}</td>
                             <td class="text-start">{{ $perusahaan->judul_deskripsi ?? '-' }}</td>
                             <td class="text-start">{{ \Illuminate\Support\Str::limit($perusahaan->deskripsi, 50) }}</td>
+                            <td class="text-center">
+                                @if ($perusahaan->status === 'aktif')
+                                    <span class="badge bg-success text-uppercase">Aktif</span>
+                                @else
+                                    <span class="badge bg-secondary text-uppercase">Nonaktif</span>
+                                @endif
+                            </td>
                             <td>
                                 <div class="d-flex flex-wrap justify-content-center gap-1">
                                     <a href="{{ route('perusahaan.show', $perusahaan->id) }}" class="btn btn-info btn-sm">Detail</a>

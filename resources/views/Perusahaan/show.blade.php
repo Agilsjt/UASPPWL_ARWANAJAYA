@@ -53,9 +53,18 @@
                                 <th class="text-start">Email</th>
                                 <td>{{ $perusahaan->email ?? '-' }}</td>
                             </tr>
+                            <tr>
+                                <th class="text-start">Status</th>
+                                <td class>
+                                    @if ($perusahaan->status === 'aktif')
+                                        <span class="badge bg-success px-3 py-1 rounded-pill">Aktif</span>
+                                    @else
+                                        <span class="badge bg-secondary px-3 py-1 rounded-pill">Nonaktif</span>
+                                    @endif
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
-
                     <div class="mt-4">
                         <a href="{{ route('perusahaan.edit', $perusahaan->id) }}" class="btn btn-warning me-2 px-4 py-2 fw-semibold rounded-pill shadow-sm btn-action">Edit</a>
                         <form action="{{ route('perusahaan.destroy', $perusahaan->id) }}" method="POST" class="d-inline"
