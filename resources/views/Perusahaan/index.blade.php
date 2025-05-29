@@ -53,8 +53,8 @@
                             <td class="text-start">{{ $perusahaan->email }}</td>
                             <td>{{ $perusahaan->telepon }}</td>
                             <td class="text-start">{{ $perusahaan->alamat }}</td>
-                            <td class="text-start">{{ $perusahaan->judul_deskripsi ?? '-' }}</td>
-                            <td class="text-start">{{ \Illuminate\Support\Str::limit($perusahaan->deskripsi, 50) }}</td>
+                            <td class="text-start">{{ \Illuminate\Support\Str::limit($perusahaan->judul_deskripsi, 60, '...') }}</td>
+                            <td class="text-start">{{ \Illuminate\Support\Str::limit($perusahaan->deskripsi, 60, '...') }}</td>
                             <td class="text-center">
                                 @if ($perusahaan->status === 'aktif')
                                     <span class="badge bg-success text-uppercase">Aktif</span>

@@ -197,7 +197,7 @@
         <li><a href="{{ route('employee.index') }}" class="{{ Request::routeIs('employee.*') ? 'active' : '' }}">Kelola Pegawai</a></li>
         <li><a href="{{ route('skill.index') }}" class="{{ Request::routeIs('skill.*') ? 'active' : '' }}">Kelola Skill</a></li>
         <li><a href="{{ route('perusahaan.index') }}" class="{{ Request::routeIs('perusahaan.*') ? 'active' : '' }}">Kelola Profil Perusahaan</a></li>
-        <li><a href="#" class="{{ Request::routeIs('service.*') ? 'active' : '' }}">Kelola Layanan</a></li>
+        <li><a href="{{ route('layanan.index') }}" class="{{ Request::routeIs('service.*') ? 'active' : '' }}">Kelola Layanan</a></li>
         <li><a href="{{ route('user.index') }}" class="{{ Request::routeIs('user.*') ? 'active' : '' }}">Kelola User</a></li>
       </ul>
     </nav>

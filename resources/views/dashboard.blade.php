@@ -66,7 +66,7 @@
             <div class="glass-card border-start border-4 border-danger">
                 <div class="card-body">
                     <h5 class="text-uppercase fw-semibold text-warning">Layanan</h5>
-                    <h2 class="fw-bold mb-2">{{ $userCount ?? 0 }}</h2>
+                    <h2 class="fw-bold mb-2">{{ $layananCount ?? 0 }}</h2>
                     <p class="mb-3">Jumlah layanan yang disediakan perusahaan</p>
                     <a href="#" class="btn btn-outline-light btn-sm px-4">Lihat</a>
                 </div>
