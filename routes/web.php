@@ -5,13 +5,14 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LandingPageController;
+
 
 use Illuminate\Support\Facades\Route;
 
 // Route homepage
-Route::get('/', function () {
-    return view('welcome')->with('title', 'Welcome');
-})->name('home');
+Route::get('/landing-page', [LandingPageController::class, 'showLandingPage'])->name('home');
+
 
 // Dashboard route protected by auth and email verification middleware
 Route::get('/dashboard', [DashboardController::class, 'index'])
