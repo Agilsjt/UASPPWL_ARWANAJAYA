@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('logo')->nullable();
             $table->timestamps();
+            $table->tinyInteger('status')->default(1); // 1 = aktif, 0 = tidak aktif
         });
     }
 

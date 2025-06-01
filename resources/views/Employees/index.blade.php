@@ -68,7 +68,7 @@
                             <td>
                                 <div class="d-flex flex-wrap justify-content-center gap-1">
                                     @can('read-employee')
-                                    <a href="{{ route('employee.show', $employee->id) }}" class="btn btn-info btn-sm">Detail</a>
+                                    <a href="{{ route('employees.show', $employee->id) }}" class="btn btn-info btn-sm">Detail</a>
                                     @endcan
 
                                     @can('edit-employee')
@@ -76,7 +76,7 @@
                                     @endcan
 
                                     @can('delete-employee')
-                                    <form action="{{ route('employee.destroy', $employee->id) }}" method="POST" class="d-inline"
+                                    <form action="{{ route('employees.destroy', $employee->id) }}" method="POST" class="d-inline"
                                         onsubmit="return confirm('Hapus pegawai ini?')">
                                         @csrf
                                         @method('DELETE')
@@ -133,7 +133,7 @@
 
                             <div class="d-flex gap-1 mt-2 flex-wrap">
                                 @can('read-employee')
-                                    <a href="{{ route('employee.show', $employee->id) }}" class="btn btn-info btn-sm w-100">Detail</a>
+                                    <a href="{{ route('employees.show', $employee->id) }}" class="btn btn-info btn-sm w-100">Detail</a>
                                 @endcan
 
                                 @can('edit-employee')
@@ -141,7 +141,7 @@
                                 @endcan
 
                                 @can('delete-employee')
-                                    <form action="{{ route('employee.destroy', $employee->id) }}" method="POST" class="w-100"
+                                    <form action="{{ route('employees.destroy', $employee->id) }}" method="POST" class="w-100"
                                           onsubmit="return confirm('Hapus pegawai ini?')">
                                         @csrf
                                         @method('DELETE')

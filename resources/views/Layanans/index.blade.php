@@ -54,7 +54,7 @@
                             <td>
                                 <div class="d-flex flex-wrap justify-content-center gap-1">
                                     @can('read-layanan')
-                                    <a href="{{ route('layanan.show', $layanan->id) }}" class="btn btn-info btn-sm" aria-label="Detail {{ $layanan->nama_layanan }}">
+                                    <a href="{{ route('layanans.show', $layanan->id) }}" class="btn btn-info btn-sm" aria-label="Detail {{ $layanan->nama_layanan }}">
                                         <i class="bi bi-info-circle"></i> Detail
                                     </a>
                                     @endcan
@@ -66,7 +66,7 @@
                                     @endcan
 
                                     @can('delete-layanan')
-                                    <form action="{{ route('layanan.destroy', $layanan->id) }}" method="POST" class="d-inline"
+                                    <form action="{{ route('layanans.destroy', $layanan->id) }}" method="POST" class="d-inline"
                                         onsubmit="return confirm('Hapus layanan ini?')" aria-label="Hapus {{ $layanan->nama_layanan }}">
                                         @csrf
                                         @method('DELETE')
@@ -109,7 +109,7 @@
 
                         <div class="d-flex gap-1 mt-3 flex-wrap">
                             @can('read-layanan')
-                            <a href="{{ route('layanan.show', $layanan->id) }}" class="btn btn-info btn-sm w-100" aria-label="Detail {{ $layanan->nama_layanan }}">Detail</a>
+                            <a href="{{ route('layanans.show', $layanan->id) }}" class="btn btn-info btn-sm w-100" aria-label="Detail {{ $layanan->nama_layanan }}">Detail</a>
                             @endcan
 
                             @can('edit-layanan')
@@ -117,7 +117,7 @@
                             @endcan
 
                             @can('delete-layanan')
-                            <form action="{{ route('layanan.destroy', $layanan->id) }}" method="POST" class="w-100"
+                            <form action="{{ route('layanans.destroy', $layanan->id) }}" method="POST" class="w-100"
                                 onsubmit="return confirm('Hapus layanan ini?')" aria-label="Hapus {{ $layanan->nama_layanan }}">
                                 @csrf
                                 @method('DELETE')

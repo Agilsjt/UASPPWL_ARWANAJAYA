@@ -57,7 +57,7 @@
 
                     <div class="mt-4">
                         <a href="{{ route('layanans.edit', $layanan->id) }}" class="btn btn-warning me-2 px-4 py-2 fw-semibold rounded-pill shadow-sm btn-action">Edit</a>
-                        <form action="{{ route('layanan.destroy', $layanan->id) }}" method="POST" class="d-inline"
+                        <form action="{{ route('layanans.destroy', $layanan->id) }}" method="POST" class="d-inline"
                             onsubmit="return confirm('Apakah Anda yakin ingin menghapus layanan ini?')">
                             @csrf
                             @method('DELETE')

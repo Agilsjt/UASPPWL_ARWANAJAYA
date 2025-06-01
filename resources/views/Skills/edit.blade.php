@@ -16,7 +16,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('skill.update', $skill->id) }}" method="POST">
+            <form action="{{ route('skills.update', $skill->id) }}" method="POST">
                 @csrf
                 @method('PUT')
 

@@ -69,7 +69,7 @@
 
                     <div class="mt-4">
                         <a href="{{ route('employees.edit', $employee->id) }}" class="btn btn-warning me-2 px-4 py-2 fw-semibold rounded-pill shadow-sm btn-action">Edit</a>
-                        <form action="{{ route('employee.destroy', $employee->id) }}" method="POST" class="d-inline"
+                        <form action="{{ route('employees.destroy', $employee->id) }}" method="POST" class="d-inline"
                             onsubmit="return confirm('Apakah Anda yakin ingin menghapus pegawai ini?')">
                             @csrf
                             @method('DELETE')
