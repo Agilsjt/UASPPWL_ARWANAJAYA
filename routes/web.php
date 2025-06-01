@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth'])->group(function () {
     
     // Admin: full access
-    Route::middleware(['role:admin'])->group(function () {
+    Route::middleware(['auth', 'checkrole:admin'])->group(function () {
         Route::resource('users', UserController::class);
         Route::resource('employees', EmployeeController::class);
         Route::resource('skills', SkillController::class);
@@ -39,20 +39,20 @@ Route::middleware(['auth'])->group(function () {
     });
 
     // Staff: read-only
-    Route::middleware(['role:staff'])->group(function () {
+    Route::middleware(['auth', 'checkrole:staff'])->group(function () {
         Route::get('employees', [EmployeeController::class, 'index'])->name('employees.index');
         Route::get('skills', [SkillController::class, 'index'])->name('skills.index');
         Route::get('layanans', [LayananController::class, 'index'])->name('layanans.index');
     });
 });
 
-Route::get('/debug-admin', function () {
-    $user = auth()->user();
-    if (!$user) {
-        return 'Tidak ada user login.';
-    }
-    return "User: {$user->email} <br> Roles: " . implode(', ', $user->getRoleNames()->toArray());
-})->middleware('auth');
+Route::get('/test-middleware', function () {
+    return 'Middleware test OK';
+})->middleware('testmiddleware');
+
+Route::get('/test-role', function () {
+    return 'Test Role Middleware';
+})->middleware('checkrole:admin');
 
 // Authentication routes
 require __DIR__.'/auth.php';
