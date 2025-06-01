@@ -67,7 +67,7 @@ class EmployeeController extends Controller
         Gate::authorize('read-employee');
 
         $employee->load('skills');
-        return view('employee.show', compact('employee'));
+        return view('employees.show', compact('employee'));
     }
 
     public function edit(Employee $employee)

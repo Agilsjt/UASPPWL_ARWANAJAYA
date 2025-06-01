@@ -41,7 +41,7 @@
                                 <td>{{ $skill->employees->count() }}</td>
                                 <td>
                                     <a href="{{ route('skills.edit', $skill->id) }}" class="btn btn-warning btn-sm me-1">Edit</a>
-                                    <form action="{{ route('skill.destroy', $skill->id) }}" method="POST" class="d-inline"
+                                    <form action="{{ route('skills.destroy', $skill->id) }}" method="POST" class="d-inline"
                                         onsubmit="return confirm('Yakin ingin menghapus skill ini?')">
                                         @csrf
                                         @method('DELETE')
@@ -67,7 +67,7 @@
                                 <h5 class="mb-1 fw-semibold">{{ $skill->name }}</h5>
                                 <div class="d-flex gap-1">
                                     <a href="{{ route('skills.edit', $skill->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                    <form action="{{ route('skill.destroy', $skill->id) }}" method="POST" class="d-inline"
+                                    <form action="{{ route('skills.destroy', $skill->id) }}" method="POST" class="d-inline"
                                         onsubmit="return confirm('Yakin ingin menghapus skill ini?')">
                                         @csrf
                                         @method('DELETE')

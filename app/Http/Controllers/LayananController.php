@@ -57,7 +57,7 @@ class LayananController extends Controller
     {
         Gate::authorize('read-layanan');
 
-        return view('layanan.show', compact('layanan'));
+        return view('layanans.show', compact('layanan'));
     }
 
     public function edit(Layanan $layanan)

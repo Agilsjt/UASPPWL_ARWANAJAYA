@@ -61,7 +61,7 @@ class SkillController extends Controller
     {
         Gate::authorize('view-skill');
 
-        return view('skill.show', compact('skill'));
+        return view('skills.show', compact('skill'));
     }
 
     /**
