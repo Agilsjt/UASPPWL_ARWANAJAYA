@@ -13,7 +13,7 @@
             </div>
 
             {{-- Search --}}
-            <form action="{{ route('perusahaan.index') }}" method="GET" class="mb-4">
+            <form action="{{ route('perusahaans.index') }}" method="GET" class="mb-4">
                 <div class="input-group">
                     <input type="text" name="search" class="form-control bg-white bg-opacity-75 text-dark border-0"
                         placeholder="Cari Profil..." value="{{ request('search') }}">
@@ -33,7 +33,7 @@
                             <th>Alamat</th>
                             <th>Judul Deskripsi</th>
                             <th>Deskripsi</th>
-                            <th>Status</th> {{-- Tambah status --}}
+                            <th>Status</th>
                             <th style="width: 220px;">Aksi</th>
                         </tr>
                     </thead>
@@ -53,9 +53,9 @@
                             <td class="text-start">{{ $perusahaan->email }}</td>
                             <td>{{ $perusahaan->telepon }}</td>
                             <td class="text-start">{{ $perusahaan->alamat }}</td>
-                            <td class="text-start">{{ \Illuminate\Support\Str::limit($perusahaan->judul_deskripsi, 60, '...') }}</td>
-                            <td class="text-start">{{ \Illuminate\Support\Str::limit($perusahaan->deskripsi, 60, '...') }}</td>
-                            <td class="text-center">
+                            <td class="text-start">{{ \Str::limit($perusahaan->judul_deskripsi, 60, '...') }}</td>
+                            <td class="text-start">{{ \Str::limit($perusahaan->deskripsi, 60, '...') }}</td>
+                            <td>
                                 @if ($perusahaan->status === 'aktif')
                                     <span class="badge bg-success text-uppercase">Aktif</span>
                                 @else
@@ -77,7 +77,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="8" class="text-center text-muted py-4">Tidak ada data perusahaan ditemukan</td>
+                            <td colspan="9" class="text-center text-muted py-4">Tidak ada data perusahaan ditemukan</td>
                         </tr>
                         @endforelse
                     </tbody>
@@ -109,7 +109,13 @@
                             <p class="mb-1"><strong>Email:</strong> {{ $perusahaan->email }}</p>
                             <p class="mb-1"><strong>Telepon:</strong> {{ $perusahaan->telepon }}</p>
                             <p class="mb-1"><strong>Alamat:</strong> {{ $perusahaan->alamat }}</p>
-                            <p class="mb-1"><strong>Deskripsi:</strong> {{ \Illuminate\Support\Str::limit($perusahaan->deskripsi, 80) }}</p>
+                            <p class="mb-1"><strong>Deskripsi:</strong> {{ \Str::limit($perusahaan->deskripsi, 80) }}</p>
+                            <p class="mb-1">
+                                <strong>Status:</strong>
+                                <span class="badge {{ $perusahaan->status === 'aktif' ? 'bg-success' : 'bg-secondary' }}">
+                                    {{ ucfirst($perusahaan->status) }}
+                                </span>
+                            </p>
                         </div>
 
                         <div class="d-flex gap-1 mt-2 flex-wrap">

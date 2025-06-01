@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+@if(Auth::user()->role !== 'admin')
+    <div class="container py-5">
+        <div class="alert alert-danger text-white bg-danger rounded-3 shadow">
+            <h4 class="fw-bold">Akses Ditolak</h4>
+            <p>Anda tidak memiliki izin untuk mengakses halaman ini.</p>
+            <a href="{{ route('layanans.index') }}" class="btn btn-light mt-2">Kembali</a>
+        </div>
+    </div>
+@else
 <div class="container py-5">
     <div class="card border-0 rounded-4 shadow-lg" style="background-color: rgba(255, 255, 255, 0.08);">
         <div class="card-body text-white">
@@ -61,13 +70,14 @@
                 </div>
 
                 <div class="d-flex justify-content-between">
-                    <a href="{{ route('layanan.index') }}" class="btn btn-outline-light rounded-pill px-4">Batal</a>
+                    <a href="{{ route('layanans.index') }}" class="btn btn-outline-light rounded-pill px-4">Batal</a>
                     <button type="submit" class="btn btn-success rounded-pill px-4 fw-semibold">Simpan</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+@endif
 @endsection
 
 @push('scripts')

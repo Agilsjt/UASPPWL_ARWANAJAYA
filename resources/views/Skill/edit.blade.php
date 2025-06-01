@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="d-flex justify-content-between">
-                    <a href="{{ route('skill.index') }}" class="btn btn-outline-light rounded-pill px-4">Batal</a>
+                    <a href="{{ route('skills.index') }}" class="btn btn-outline-light rounded-pill px-4">Batal</a>
                     <button type="submit" class="btn btn-success rounded-pill px-4 fw-semibold">Perbarui</button>
                 </div>
             </form>

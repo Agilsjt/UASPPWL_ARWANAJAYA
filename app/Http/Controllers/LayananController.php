@@ -20,7 +20,7 @@ class LayananController extends Controller
             })
             ->paginate(10);
 
-        return view('layanan.index', compact('layanans'));
+        return view('layanans.index', compact('layanans'));
     }
 
     public function create()
@@ -50,7 +50,7 @@ class LayananController extends Controller
 
         $layanan->save();
 
-        return redirect()->route('layanan.index')->with('success', 'Layanan berhasil ditambahkan.');
+        return redirect()->route('layanans.index')->with('success', 'Layanan berhasil ditambahkan.');
     }
 
     public function show(Layanan $layanan)
@@ -92,7 +92,7 @@ class LayananController extends Controller
             $layanan->save();
         }
 
-        return redirect()->route('layanan.index')->with('success', 'Layanan berhasil diperbarui.');
+        return redirect()->route('layanans.index')->with('success', 'Layanan berhasil diperbarui.');
     }
 
     public function destroy(Layanan $layanan)
@@ -105,7 +105,7 @@ class LayananController extends Controller
 
         $layanan->delete();
 
-        return redirect()->route('layanan.index')->with('success', 'Layanan berhasil dihapus.');
+        return redirect()->route('layanans.index')->with('success', 'Layanan berhasil dihapus.');
     }
 
     /**

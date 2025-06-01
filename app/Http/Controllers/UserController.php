@@ -22,7 +22,7 @@ class UserController extends Controller
             })
             ->paginate(10);
 
-        return view('user.index', compact('users'));
+        return view('users.index', compact('users'));
     }
 
     public function create()
@@ -60,7 +60,7 @@ class UserController extends Controller
 
         $user->syncRoles($request->roles);
 
-        return redirect()->route('user.index')->with('success', 'User berhasil ditambahkan!');
+        return redirect()->route('users.index')->with('success', 'User berhasil ditambahkan!');
     }
 
     public function show(User $user)
@@ -108,7 +108,7 @@ class UserController extends Controller
         $user->save();
         $user->syncRoles($request->roles);
 
-        return redirect()->route('user.index')->with('success', 'User berhasil diperbarui!');
+        return redirect()->route('users.index')->with('success', 'User berhasil diperbarui!');
     }
 
     public function destroy(User $user)
@@ -117,6 +117,6 @@ class UserController extends Controller
 
         $user->delete();
 
-        return redirect()->route('user.index')->with('success', 'User berhasil dihapus!');
+        return redirect()->route('users.index')->with('success', 'User berhasil dihapus!');
     }
 }

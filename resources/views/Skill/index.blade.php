@@ -13,7 +13,7 @@
             </div>
 
             {{-- Search Form --}}
-            <form action="{{ route('skill.index') }}" method="GET" class="mb-4">
+            <form action="{{ route('skills.index') }}" method="GET" class="mb-4">
                 <div class="input-group">
                     <input type="text" name="search" class="form-control bg-white bg-opacity-75 text-dark border-0" placeholder="Cari skill..." value="{{ request('search') }}">
                     <button class="btn btn-outline-light fw-semibold" type="submit">Cari</button>

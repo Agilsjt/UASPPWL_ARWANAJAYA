@@ -7,7 +7,7 @@
 
             {{-- Tombol kembali --}}
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <a href="{{ route('layanan.index') }}" style="display: inline-flex; align-items: center; padding: 8px; background: none; border: none; cursor: pointer;">
+                <a href="{{ route('layanans.index') }}" style="display: inline-flex; align-items: center; padding: 8px; background: none; border: none; cursor: pointer;">
                     <svg viewBox="0 0 72 72" width="36" height="36" xmlns="http://www.w3.org/2000/svg" fill="none">
                         <polyline 
                         fill="none" 

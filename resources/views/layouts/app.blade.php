@@ -194,11 +194,11 @@
     <nav class="flex-grow-1">
       <ul class="sidebar-menu list-unstyled mb-0">
         <li><a href="{{ route('dashboard') }}" class="{{ Request::routeIs('dashboard') ? 'active' : '' }}">Dashboard</a></li>
-        <li><a href="{{ route('employee.index') }}" class="{{ Request::routeIs('employee.*') ? 'active' : '' }}">Kelola Pegawai</a></li>
-        <li><a href="{{ route('skill.index') }}" class="{{ Request::routeIs('skill.*') ? 'active' : '' }}">Kelola Skill</a></li>
-        <li><a href="{{ route('perusahaan.index') }}" class="{{ Request::routeIs('perusahaan.*') ? 'active' : '' }}">Kelola Profil Perusahaan</a></li>
-        <li><a href="{{ route('layanan.index') }}" class="{{ Request::routeIs('service.*') ? 'active' : '' }}">Kelola Layanan</a></li>
-        <li><a href="{{ route('user.index') }}" class="{{ Request::routeIs('user.*') ? 'active' : '' }}">Kelola User</a></li>
+        <li><a href="{{ route('employees.index') }}" class="{{ Request::routeIs('employee.*') ? 'active' : '' }}">Kelola Pegawai</a></li>
+        <li><a href="{{ route('skills.index') }}" class="{{ Request::routeIs('skill.*') ? 'active' : '' }}">Kelola Skill</a></li>
+        <li><a href="{{ route('perusahaans.index') }}" class="{{ Request::routeIs('perusahaan.*') ? 'active' : '' }}">Kelola Profil Perusahaan</a></li>
+        <li><a href="{{ route('layanans.index') }}" class="{{ Request::routeIs('service.*') ? 'active' : '' }}">Kelola Layanan</a></li>
+        <li><a href="{{ route('users.index') }}" class="{{ Request::routeIs('user.*') ? 'active' : '' }}">Kelola User</a></li>
       </ul>
     </nav>
     <div class="sidebar-logout px-3 py-3 mt-auto">

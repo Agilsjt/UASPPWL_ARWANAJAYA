@@ -23,7 +23,7 @@ class PerusahaanController extends Controller
             ->latest()
             ->paginate(10);
 
-        return view('perusahaan.index', compact('perusahaans'));
+        return view('perusahaans.index', compact('perusahaans'));
     }
 
     // Menampilkan form untuk membuat perusahaan baru
@@ -54,7 +54,7 @@ class PerusahaanController extends Controller
 
         Perusahaan::create($data);
 
-        return redirect()->route('perusahaan.index')->with('success', 'Data perusahaan berhasil ditambahkan.');
+        return redirect()->route('perusahaans.index')->with('success', 'Data perusahaan berhasil ditambahkan.');
     }
 
     // Menampilkan detail perusahaan
@@ -94,7 +94,7 @@ class PerusahaanController extends Controller
 
         $perusahaan->update($data);
 
-        return redirect()->route('perusahaan.index')->with('success', 'Data perusahaan berhasil diperbarui.');
+        return redirect()->route('perusahaans.index')->with('success', 'Data perusahaan berhasil diperbarui.');
     }
 
     // Menghapus perusahaan
@@ -106,6 +106,6 @@ class PerusahaanController extends Controller
 
         $perusahaan->delete();
 
-        return redirect()->route('perusahaan.index')->with('success', 'Data perusahaan berhasil dihapus.');
+        return redirect()->route('perusahaans.index')->with('success', 'Data perusahaan berhasil dihapus.');
     }
 }

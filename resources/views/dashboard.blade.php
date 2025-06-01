@@ -20,7 +20,7 @@
                     <h5 class="text-uppercase fw-semibold text-primary">Pegawai</h5>
                     <h2 class="fw-bold mb-2">{{ $employeeCount ?? 0 }}</h2>
                     <p class="mb-3">Total pegawai yang ada</p>
-                    <a href="{{ route('employee.index') }}" class="btn btn-outline-light btn-sm px-4">Lihat</a>
+                    <a href="{{ route('employees.index') }}" class="btn btn-outline-light btn-sm px-4">Lihat</a>
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
                     <h5 class="text-uppercase fw-semibold text-success">Skill</h5>
                     <h2 class="fw-bold mb-2">{{ $skillCount ?? 0 }}</h2>
                     <p class="mb-3">Total skill yang ada di perusahaan</p>
-                    <a href="{{ route('skill.index') }}" class="btn btn-outline-light btn-sm px-4">Lihat</a>
+                    <a href="{{ route('skills.index') }}" class="btn btn-outline-light btn-sm px-4">Lihat</a>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
                     <h5 class="text-uppercase fw-semibold text-warning">User</h5>
                     <h2 class="fw-bold mb-2">{{ $userCount ?? 0 }}</h2>
                     <p class="mb-3">User yang sudah terdaftar di sistem</p>
-                    <a href="{{ route('user.index') }}" class="btn btn-outline-light btn-sm px-4">Lihat</a>
+                    <a href="{{ route('users.index') }}" class="btn btn-outline-light btn-sm px-4">Lihat</a>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
                     <h5 class="text-uppercase fw-semibold text-info">Profil Perusahaan</h5>
                     <h2 class="fw-bold mb-2">Kelola</h2>
                     <p class="mb-3">Lihat dan edit profil perusahaan</p>
-                    <a href="{{ route('perusahaan.index') }}" class="btn btn-outline-light btn-sm px-4">Lihat</a>
+                    <a href="{{ route('perusahaans.index') }}" class="btn btn-outline-light btn-sm px-4">Lihat</a>
                 </div>
             </div>
         </div>

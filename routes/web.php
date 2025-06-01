@@ -26,12 +26,33 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Resource routes
-Route::resource('employee', EmployeeController::class)->middleware('auth');
-Route::resource('skill', SkillController::class)->middleware('auth');
-Route::resource('user', UserController::class)->middleware('auth');
-Route::resource('perusahaan', PerusahaanController::class)->middleware('auth');
-Route::resource('layanan', LayananController::class)->middleware('auth');
+// Role-based access
+Route::middleware(['auth'])->group(function () {
+    
+    // Admin: full access
+    Route::middleware(['role:admin'])->group(function () {
+        Route::resource('users', UserController::class);
+        Route::resource('employees', EmployeeController::class);
+        Route::resource('skills', SkillController::class);
+        Route::resource('layanans', LayananController::class);
+        Route::resource('perusahaans', PerusahaanController::class);
+    });
+
+    // Staff: read-only
+    Route::middleware(['role:staff'])->group(function () {
+        Route::get('employees', [EmployeeController::class, 'index'])->name('employees.index');
+        Route::get('skills', [SkillController::class, 'index'])->name('skills.index');
+        Route::get('layanans', [LayananController::class, 'index'])->name('layanans.index');
+    });
+});
+
+Route::get('/debug-admin', function () {
+    $user = auth()->user();
+    if (!$user) {
+        return 'Tidak ada user login.';
+    }
+    return "User: {$user->email} <br> Roles: " . implode(', ', $user->getRoleNames()->toArray());
+})->middleware('auth');
 
 // Authentication routes
 require __DIR__.'/auth.php';
