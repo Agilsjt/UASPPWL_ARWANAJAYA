@@ -8,7 +8,7 @@
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2 class="fw-bold mb-0 ms-2" style="font-size: 25px;">Daftar Layanan</h2>
                 @can('create-layanan')
-                <a href="{{ route('layanan.create') }}" class="btn btn-success px-4 fw-semibold rounded-pill shadow-sm" aria-label="Tambah Layanan Baru">
+                <a href="{{ route('layanans.create') }}" class="btn btn-success px-4 fw-semibold rounded-pill shadow-sm" aria-label="Tambah Layanan Baru">
                     + Tambah Layanan
                 </a>
                 @endcan
@@ -60,7 +60,7 @@
                                     @endcan
 
                                     @can('edit-layanan')
-                                    <a href="{{ route('layanan.edit', $layanan->id) }}" class="btn btn-warning btn-sm" aria-label="Edit {{ $layanan->nama_layanan }}">
+                                    <a href="{{ route('layanans.edit', $layanan->id) }}" class="btn btn-warning btn-sm" aria-label="Edit {{ $layanan->nama_layanan }}">
                                         <i class="bi bi-pencil-square"></i> Edit
                                     </a>
                                     @endcan
@@ -113,7 +113,7 @@
                             @endcan
 
                             @can('edit-layanan')
-                            <a href="{{ route('layanan.edit', $layanan->id) }}" class="btn btn-warning btn-sm w-100" aria-label="Edit {{ $layanan->nama_layanan }}">Edit</a>
+                            <a href="{{ route('layanans.edit', $layanan->id) }}" class="btn btn-warning btn-sm w-100" aria-label="Edit {{ $layanan->nama_layanan }}">Edit</a>
                             @endcan
 
                             @can('delete-layanan')

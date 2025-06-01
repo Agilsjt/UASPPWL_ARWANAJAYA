@@ -30,7 +30,7 @@ class EmployeeController extends Controller
         Gate::authorize('create-employee');
 
         $skills = Skill::all();
-        return view('employee.create', compact('skills'));
+        return view('employees.create', compact('skills'));
     }
 
     public function store(Request $request)
@@ -77,7 +77,7 @@ class EmployeeController extends Controller
         $skills = Skill::all();
         $employeeSkillIds = $employee->skills->pluck('id')->toArray();
 
-        return view('employee.edit', compact('employee', 'skills', 'employeeSkillIds'));
+        return view('employees.edit', compact('employee', 'skills', 'employeeSkillIds'));
     }
 
     public function update(Request $request, Employee $employee)

@@ -42,4 +42,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed', // Laravel >=10 supports 'hashed' to auto-hash on set
     ];
+
+    public function hasAnyRole($roles)
+    {
+        return in_array($this->role, is_array($roles) ? $roles : [$roles]);
+    }
+
 }

@@ -28,22 +28,25 @@ Route::middleware('auth')->group(function () {
 
 // Role-based access
 Route::middleware(['auth'])->group(function () {
-    
-    // Admin: full access
+
+    // Staff-only access
+    Route::middleware(['auth', 'checkrole:staff'])->group(function () {
+        Route::resource('employees', EmployeeController::class)->only(['index']);
+        Route::resource('skills', SkillController::class)->only(['index']);
+        Route::resource('layanans', LayananController::class)->only(['index']);
+        Route::resource('perusahaans', PerusahaanController::class)->only(['index']);
+        Route::resource('users', UserController::class)->only(['index']);
+    });
+
+    // Admin access to all
     Route::middleware(['auth', 'checkrole:admin'])->group(function () {
-        Route::resource('users', UserController::class);
         Route::resource('employees', EmployeeController::class);
         Route::resource('skills', SkillController::class);
         Route::resource('layanans', LayananController::class);
         Route::resource('perusahaans', PerusahaanController::class);
+        Route::resource('users', UserController::class);
     });
 
-    // Staff: read-only
-    Route::middleware(['auth', 'checkrole:staff'])->group(function () {
-        Route::get('employees', [EmployeeController::class, 'index'])->name('employees.index');
-        Route::get('skills', [SkillController::class, 'index'])->name('skills.index');
-        Route::get('layanans', [LayananController::class, 'index'])->name('layanans.index');
-    });
 });
 
 Route::get('/test-middleware', function () {

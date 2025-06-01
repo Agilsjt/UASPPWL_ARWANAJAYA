@@ -16,7 +16,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('skill.store') }}" method="POST">
+            <form action="{{ route('skills.store') }}" method="POST">
                 @csrf
 
                 <div class="mb-3">

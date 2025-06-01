@@ -25,7 +25,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('layanan.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('layanans.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class="mb-3">

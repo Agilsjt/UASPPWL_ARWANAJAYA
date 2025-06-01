@@ -9,7 +9,7 @@
                 <h2 class="fw-bold mb-0 ms-2" style="font-size: 25px;">Daftar Pegawai</h2>
 
                 @can('create-employee')
-                <a href="{{ route('employee.create') }}" class="btn btn-success px-4 fw-semibold rounded-pill shadow-sm">
+                <a href="{{ route('employees.create') }}" class="btn btn-success px-4 fw-semibold rounded-pill shadow-sm">
                     + Tambah Pegawai
                 </a>
                 @endcan
@@ -72,7 +72,7 @@
                                     @endcan
 
                                     @can('edit-employee')
-                                    <a href="{{ route('employee.edit', $employee->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="{{ route('employees.edit', $employee->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                     @endcan
 
                                     @can('delete-employee')
@@ -137,7 +137,7 @@
                                 @endcan
 
                                 @can('edit-employee')
-                                    <a href="{{ route('employee.edit', $employee->id) }}" class="btn btn-warning btn-sm w-100">Edit</a>
+                                    <a href="{{ route('employees.edit', $employee->id) }}" class="btn btn-warning btn-sm w-100">Edit</a>
                                 @endcan
 
                                 @can('delete-employee')
@@ -163,7 +163,6 @@
         </div>
     </div>
 </div>
-@endif
 @endsection
 
 @push('styles')

@@ -27,7 +27,7 @@ class LayananController extends Controller
     {
         Gate::authorize('create-layanan');
 
-        return view('layanan.create');
+        return view('layanans.create');
     }
 
     public function store(Request $request)
@@ -64,7 +64,7 @@ class LayananController extends Controller
     {
         Gate::authorize('edit-layanan');
 
-        return view('layanan.edit', compact('layanan'));
+        return view('layanans.edit', compact('layanan'));
     }
 
     public function update(Request $request, Layanan $layanan)
