@@ -20,9 +20,9 @@ class EmployeeController extends Controller
                       ->orWhere('email', 'like', "%{$request->search}%")
                       ->orWhere('position', 'like', "%{$request->search}%");
             })
-            ->paginate(5);
+            ->paginate(10);
 
-        return view('employee.index', compact('employees'));
+        return view('employees.index', compact('employees'));
     }
 
     public function create()
@@ -59,7 +59,7 @@ class EmployeeController extends Controller
 
         $employee->skills()->attach($validated['skills'] ?? []);
 
-        return redirect()->route('employee.index')->with('success', 'Employee created successfully.');
+        return redirect()->route('employees.index')->with('success', 'Employee created successfully.');
     }
 
     public function show(Employee $employee)
@@ -110,7 +110,7 @@ class EmployeeController extends Controller
 
         $employee->skills()->sync($validated['skills'] ?? []);
 
-        return redirect()->route('employee.index')->with('success', 'Employee updated successfully.');
+        return redirect()->route('employees.index')->with('success', 'Employee updated successfully.');
     }
 
     public function destroy(Employee $employee)
@@ -125,7 +125,7 @@ class EmployeeController extends Controller
 
         $employee->delete();
 
-        return redirect()->route('employee.index')->with('success', 'Employee deleted successfully.');
+        return redirect()->route('employees.index')->with('success', 'Employee deleted successfully.');
     }
 
     /**
