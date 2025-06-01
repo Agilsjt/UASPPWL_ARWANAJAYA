@@ -30,7 +30,7 @@ class UserController extends Controller
         Gate::authorize('create-user');
 
         $roles = Role::all();
-        return view('user.create', compact('roles'));
+        return view('users.create', compact('roles'));
     }
 
     public function store(Request $request)
@@ -67,7 +67,7 @@ class UserController extends Controller
     {
         Gate::authorize('view-user');
 
-        return view('user.show', compact('user'));
+        return view('users.show', compact('user'));
     }
 
     public function edit(User $user)
@@ -77,7 +77,7 @@ class UserController extends Controller
         $roles = Role::all();
         $userRoles = $user->roles->pluck('name')->toArray();
 
-        return view('user.edit', compact('user', 'roles', 'userRoles'));
+        return view('users.edit', compact('user', 'roles', 'userRoles'));
     }
 
     public function update(Request $request, User $user)

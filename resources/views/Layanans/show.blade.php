@@ -4,8 +4,10 @@
 <div class="container py-5">
     <div class="card border-0 rounded-4 shadow-lg" style="background-color: rgba(255, 255, 255, 0.1);">
         <div class="card-body text-white">
+
+            {{-- Tombol kembali --}}
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <a href="{{ route('employees.index') }}" style="display: inline-flex; align-items: center; padding: 8px; background: none; border: none; cursor: pointer;">
+                <a href="{{ route('layanans.index') }}" style="display: inline-flex; align-items: center; padding: 8px; background: none; border: none; cursor: pointer;">
                     <svg viewBox="0 0 72 72" width="36" height="36" xmlns="http://www.w3.org/2000/svg" fill="none">
                         <polyline 
                         fill="none" 
@@ -18,59 +20,45 @@
                     </svg>
                 </a>
             </div>
+
+            {{-- Konten --}}
             <div class="row">
                 <div class="col-md-4 text-center mb-4">
-                    @if ($employee->profile_picture)
-                        <img src="{{ asset('storage/' . $employee->profile_picture) }}" alt="Foto Profil"
-                            class="rounded-circle border border-white shadow-sm" width="150" height="150" style="object-fit: cover;">
+                    @if ($layanan->gambar)
+                        <img src="{{ asset('storage/' . $layanan->gambar) }}" alt="Gambar Layanan"
+                             class="rounded border border-white shadow-sm" width="150" height="150" style="object-fit: cover;">
                     @else
-                        <div class="d-flex align-items-center justify-content-center rounded-circle border border-white shadow-sm" 
+                        <div class="d-flex align-items-center justify-content-center rounded border border-white shadow-sm" 
                              style="width:150px; height:150px; background-color: rgba(255,255,255,0.1);">
-                            <span class="text-muted">Tidak ada foto</span>
+                            <span class="text-muted">Tidak ada gambar</span>
                         </div>
                     @endif
 
-                    <h3 class="mt-3 fw-bold text-white">{{ $employee->name }}</h3>
+                    <h3 class="mt-3 fw-bold text-white">{{ $layanan->nama_layanan }}</h3>
                 </div>
 
                 <div class="col-md-8">
                     <table class="table table-borderless text-white">
                         <tbody>
                             <tr>
-                                <th class="text-start">Email</th>
-                                <td>{{ $employee->email }}</td>
+                                <th class="text-start">Deskripsi</th>
+                                <td>{{ $layanan->deskripsi ?? '-' }}</td>
                             </tr>
                             <tr>
-                                <th class="text-start">No. HP</th>
-                                <td>{{ $employee->phone ?? '-' }}</td>
+                                <th class="text-start">Harga</th>
+                                <td>Rp{{ number_format($layanan->harga, 0, ',', '.') }}</td>
                             </tr>
                             <tr>
-                                <th class="text-start">Alamat</th>
-                                <td>{{ $employee->address ?? '-' }}</td>
-                            </tr>
-                            <tr>
-                                <th class="text-start">Jabatan</th>
-                                <td>{{ $employee->position ?? '-' }}</td>
-                            </tr>
-                            <tr>
-                                <th class="text-start">Keahlian</th>
-                                <td>
-                                    @if ($employee->skills->count())
-                                        @foreach ($employee->skills as $skill)
-                                            <span class="badge bg-light text-dark fw-normal me-2 py-1 px-3" style="font-size: 0.9rem;">{{ $skill->name }}</span>
-                                        @endforeach
-                                    @else
-                                        <span class="text-muted">Tidak ada skill yang dimasukkan</span>
-                                    @endif
-                                </td>
+                                <th class="text-start">Kategori</th>
+                                <td>{{ $layanan->kategori?? '-' }}</td>
                             </tr>
                         </tbody>
                     </table>
 
                     <div class="mt-4">
-                        <a href="{{ route('employee.edit', $employee->id) }}" class="btn btn-warning me-2 px-4 py-2 fw-semibold rounded-pill shadow-sm btn-action">Edit</a>
-                        <form action="{{ route('employee.destroy', $employee->id) }}" method="POST" class="d-inline"
-                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus pegawai ini?')">
+                        <a href="{{ route('layanans.edit', $layanan->id) }}" class="btn btn-warning me-2 px-4 py-2 fw-semibold rounded-pill shadow-sm btn-action">Edit</a>
+                        <form action="{{ route('layanan.destroy', $layanan->id) }}" method="POST" class="d-inline"
+                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus layanan ini?')">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger px-4 py-2 fw-semibold rounded-pill shadow-sm btn-action">Hapus</button>
@@ -78,6 +66,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
@@ -126,4 +115,3 @@
         color: rgba(255, 255, 255, 0.6) !important;
     }
 </style>
-

@@ -9,7 +9,7 @@
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2 class="fw-bold mb-0 ms-2" style="font-size: 25px;">Daftar User</h2>
                 @can('create-user')
-                    <a href="{{ route('user.create') }}" class="btn btn-success px-4 fw-semibold rounded-pill shadow-sm">
+                    <a href="{{ route('users.create') }}" class="btn btn-success px-4 fw-semibold rounded-pill shadow-sm">
                         + Tambah User
                     </a>
                 @endcan
@@ -52,13 +52,13 @@
                                 </td>
                                 <td>
                                     @can('read-user')
-                                        <a href="{{ route('user.show', $user->id) }}" class="btn btn-info btn-sm me-1">Detail</a>
+                                        <a href="{{ route('users.show', $user->id) }}" class="btn btn-info btn-sm me-1">Detail</a>
                                     @endcan
                                     @can('edit-user')
-                                        <a href="{{ route('user.edit', $user->id) }}" class="btn btn-warning btn-sm me-1">Edit</a>
+                                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm me-1">Edit</a>
                                     @endcan
                                     @can('delete-user')
-                                        <form action="{{ route('user.destroy', $user->id) }}" method="POST" class="d-inline"
+                                        <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline"
                                             onsubmit="return confirm('Yakin ingin menghapus user ini?')">
                                             @csrf
                                             @method('DELETE')

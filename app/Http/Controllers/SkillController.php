@@ -33,7 +33,7 @@ class SkillController extends Controller
     {
         Gate::authorize('create-skill');
 
-        return view('skill.create');
+        return view('skills.create');
     }
 
     /**
@@ -71,7 +71,7 @@ class SkillController extends Controller
     {
         Gate::authorize('edit-skill');
 
-        return view('skill.edit', compact('skill'));
+        return view('skills.edit', compact('skill'));
     }
 
     /**

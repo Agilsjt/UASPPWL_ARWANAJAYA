@@ -29,7 +29,7 @@ class PerusahaanController extends Controller
     // Menampilkan form untuk membuat perusahaan baru
     public function create()
     {
-        return view('perusahaan.create');
+        return view('perusahaans.create');
     }
 
     // Menyimpan data perusahaan baru
@@ -66,7 +66,7 @@ class PerusahaanController extends Controller
     // Menampilkan form edit perusahaan
     public function edit(Perusahaan $perusahaan)
     {
-        return view('perusahaan.edit', compact('perusahaan'));
+        return view('perusahaans.edit', compact('perusahaan'));
     }
 
     // Memperbarui data perusahaan

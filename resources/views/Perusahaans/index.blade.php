@@ -7,7 +7,7 @@
             {{-- Header --}}
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2 class="fw-bold mb-0 ms-2" style="font-size: 25px;">Profil Perusahaan</h2>
-                <a href="{{ route('perusahaan.create') }}" class="btn btn-success px-4 fw-semibold rounded-pill shadow-sm">
+                <a href="{{ route('perusahaans.create') }}" class="btn btn-success px-4 fw-semibold rounded-pill shadow-sm">
                     + Tambah Profil
                 </a>
             </div>
@@ -65,7 +65,7 @@
                             <td>
                                 <div class="d-flex flex-wrap justify-content-center gap-1">
                                     <a href="{{ route('perusahaan.show', $perusahaan->id) }}" class="btn btn-info btn-sm">Detail</a>
-                                    <a href="{{ route('perusahaan.edit', $perusahaan->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="{{ route('perusahaans.edit', $perusahaan->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                     <form action="{{ route('perusahaan.destroy', $perusahaan->id) }}" method="POST" class="d-inline"
                                         onsubmit="return confirm('Yakin ingin menghapus data perusahaan ini?')">
                                         @csrf
@@ -120,7 +120,7 @@
 
                         <div class="d-flex gap-1 mt-2 flex-wrap">
                             <a href="{{ route('perusahaan.show', $perusahaan->id) }}" class="btn btn-info btn-sm w-100">Detail</a>
-                            <a href="{{ route('perusahaan.edit', $perusahaan->id) }}" class="btn btn-warning btn-sm w-100">Edit</a>
+                            <a href="{{ route('perusahaans.edit', $perusahaan->id) }}" class="btn btn-warning btn-sm w-100">Edit</a>
                             <form action="{{ route('perusahaan.destroy', $perusahaan->id) }}" method="POST" class="w-100"
                                 onsubmit="return confirm('Yakin ingin menghapus data perusahaan ini?')">
                                 @csrf

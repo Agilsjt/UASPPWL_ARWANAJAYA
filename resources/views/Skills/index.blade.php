@@ -7,7 +7,7 @@
             {{-- Header --}}
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2 class="fw-bold mb-0 ms-2" style="font-size: 25px;">Daftar Skill</h2>
-                <a href="{{ route('skill.create') }}" class="btn btn-success px-4 fw-semibold rounded-pill shadow-sm">
+                <a href="{{ route('skills.create') }}" class="btn btn-success px-4 fw-semibold rounded-pill shadow-sm">
                     + Tambah Skill
                 </a>
             </div>
@@ -40,7 +40,7 @@
                                 <td class="text-start">{{ $skill->description }}</td>
                                 <td>{{ $skill->employees->count() }}</td>
                                 <td>
-                                    <a href="{{ route('skill.edit', $skill->id) }}" class="btn btn-warning btn-sm me-1">Edit</a>
+                                    <a href="{{ route('skills.edit', $skill->id) }}" class="btn btn-warning btn-sm me-1">Edit</a>
                                     <form action="{{ route('skill.destroy', $skill->id) }}" method="POST" class="d-inline"
                                         onsubmit="return confirm('Yakin ingin menghapus skill ini?')">
                                         @csrf
@@ -66,7 +66,7 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <h5 class="mb-1 fw-semibold">{{ $skill->name }}</h5>
                                 <div class="d-flex gap-1">
-                                    <a href="{{ route('skill.edit', $skill->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="{{ route('skills.edit', $skill->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                     <form action="{{ route('skill.destroy', $skill->id) }}" method="POST" class="d-inline"
                                         onsubmit="return confirm('Yakin ingin menghapus skill ini?')">
                                         @csrf
