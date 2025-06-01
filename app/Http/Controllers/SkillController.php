@@ -23,7 +23,7 @@ class SkillController extends Controller
 
         $skills = $query->paginate(20);
 
-        return view('skill.index', compact('skills'));
+        return view('skills.index', compact('skills'));
     }
 
     /**
@@ -50,7 +50,7 @@ class SkillController extends Controller
 
         Skill::create($validated);
 
-        return redirect()->route('skill.index')
+        return redirect()->route('skills.index')
             ->with('success', 'Skill created successfully.');
     }
 
@@ -88,7 +88,7 @@ class SkillController extends Controller
 
         $skill->update($validated);
 
-        return redirect()->route('skill.index')
+        return redirect()->route('skills.index')
             ->with('success', 'Skill updated successfully.');
     }
 
@@ -101,7 +101,7 @@ class SkillController extends Controller
 
         $skill->delete();
 
-        return redirect()->route('skill.index')
+        return redirect()->route('skills.index')
             ->with('success', 'Skill deleted successfully.');
     }
 }

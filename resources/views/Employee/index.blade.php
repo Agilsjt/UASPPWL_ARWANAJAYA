@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+@if(Auth::user()->role !== 'admin')
+    <div class="container py-5">
+        <div class="alert alert-danger text-white bg-danger rounded-3 shadow">
+            <h4 class="fw-bold">Akses Ditolak</h4>
+            <p>Anda tidak memiliki izin untuk mengakses halaman ini.</p>
+            <a href="{{ route('employees.index') }}" class="btn btn-light mt-2">Kembali</a>
+        </div>
+    </div>
+@else
 <div class="container py-5">
     <div class="card border-0 rounded-5 shadow-lg" style="background-color: rgba(255, 255, 255, 0.1);">
         <div class="card-body text-white">
@@ -16,7 +25,7 @@
             </div>
 
             {{-- Search --}}
-            <form action="{{ route('employee.index') }}" method="GET" class="mb-4">
+            <form action="{{ route('employees.index') }}" method="GET" class="mb-4">
                 <div class="input-group">
                     <input type="text" name="search" class="form-control bg-white bg-opacity-75 text-dark border-0"
                         placeholder="Cari Pegawai..." value="{{ request('search') }}">
@@ -163,6 +172,7 @@
         </div>
     </div>
 </div>
+@endif
 @endsection
 
 @push('styles')

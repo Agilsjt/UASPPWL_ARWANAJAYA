@@ -5,7 +5,7 @@
     <div class="card border-0 rounded-4 shadow-lg" style="background-color: rgba(255, 255, 255, 0.1);">
         <div class="card-body text-white">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <a href="{{ route('user.index') }}" style="display: inline-flex; align-items: center; padding: 8px; background: none; border: none; cursor: pointer;">
+                <a href="{{ route('users.index') }}" style="display: inline-flex; align-items: center; padding: 8px; background: none; border: none; cursor: pointer;">
                     <svg viewBox="0 0 72 72" width="36" height="36" xmlns="http://www.w3.org/2000/svg" fill="none">
                         <polyline 
                         fill="none" 

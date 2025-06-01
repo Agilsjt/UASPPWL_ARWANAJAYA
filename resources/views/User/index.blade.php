@@ -16,7 +16,7 @@
             </div>
 
             {{-- Search Form --}}
-            <form action="{{ route('user.index') }}" method="GET" class="mb-4">
+            <form action="{{ route('users.index') }}" method="GET" class="mb-4">
                 <div class="input-group">
                     <input type="text" name="search" class="form-control bg-white bg-opacity-100 text-dark border-0" placeholder="Cari user..." value="{{ request('search') }}">
                     <button class="btn btn-outline-light fw-semibold" type="submit">Cari</button>
