@@ -40,12 +40,16 @@
                                 <td class="text-start">{{ $skill->description }}</td>
                                 <td>{{ $skill->employees->count() }}</td>
                                 <td>
-                                    <a href="{{ route('skills.edit', $skill->id) }}" class="btn btn-warning btn-sm me-1">Edit</a>
+                                    <a href="{{ route('skills.edit', $skill->id) }}" class="btn btn-warning btn-sm me-1">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
                                     <form action="{{ route('skills.destroy', $skill->id) }}" method="POST" class="d-inline"
                                         onsubmit="return confirm('Yakin ingin menghapus skill ini?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
@@ -66,12 +70,16 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <h5 class="mb-1 fw-semibold">{{ $skill->name }}</h5>
                                 <div class="d-flex gap-1">
-                                    <a href="{{ route('skills.edit', $skill->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="{{ route('skills.edit', $skill->id) }}" class="btn btn-warning btn-sm">
+                                        <i class="bi bi-pencil-square"></i> Edit
+                                    </a>
                                     <form action="{{ route('skills.destroy', $skill->id) }}" method="POST" class="d-inline"
                                         onsubmit="return confirm('Yakin ingin menghapus skill ini?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="bi bi-trash"></i> Hapus
+                                        </button>
                                     </form>
                                 </div>
                             </div>

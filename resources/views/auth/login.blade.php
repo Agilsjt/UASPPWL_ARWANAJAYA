@@ -55,6 +55,22 @@
     <div class="md:w-1/2 mt-10 md:mt-0 flex justify-center">
       <div id="auth-box" class="opacity-0 translate-y-10 transition-all duration-1000 ease-out bg-white/10 backdrop-blur-xl p-10 rounded-2xl shadow-2xl w-full max-w-md border border-white/20">
         <h1 class="text-3xl font-bold text-center text-white mb-6 drop-shadow-md">Selamat Datang</h1>
+        @if (session('error'))
+          <div class="bg-red-500/30 border border-red-300 text-white text-sm rounded-lg px-4 py-3 mb-4">
+            {{ session('error') }}
+          </div>
+        @endif
+
+        @if ($errors->any())
+          <div class="bg-red-500/30 border border-red-300 text-white text-sm rounded-lg px-4 py-3 mb-4">
+            <ul class="list-disc list-inside space-y-1">
+              @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
+
 
         <form method="POST" action="{{ route('login') }}" class="space-y-6">
           @csrf

@@ -7,9 +7,12 @@
             {{-- Header --}}
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2 class="fw-bold mb-0 ms-2" style="font-size: 25px;">Profil Perusahaan</h2>
+                @can('create-profil_perusahaan')
+                {{-- Button Tambah Profil --}}
                 <a href="{{ route('perusahaans.create') }}" class="btn btn-success px-4 fw-semibold rounded-pill shadow-sm">
                     + Tambah Profil
                 </a>
+                @endcan
             </div>
 
             {{-- Search --}}
@@ -53,8 +56,8 @@
                             <td class="text-start">{{ $perusahaan->email }}</td>
                             <td>{{ $perusahaan->telepon }}</td>
                             <td class="text-start">{{ $perusahaan->alamat }}</td>
-                            <td class="text-start">{{ \Str::limit($perusahaan->judul_deskripsi, 60, '...') }}</td>
-                            <td class="text-start">{{ \Str::limit($perusahaan->deskripsi, 60, '...') }}</td>
+                            <td class="text-start">{{ \Illuminate\Support\Str::limit($perusahaan->judul_deskripsi, 10, '...') }}</td>
+                            <td class="text-start">{{ \Illuminate\Support\Str::limit($perusahaan->deskripsi, 10, '...') }}</td>
                             <td>
                                 @if ($perusahaan->status === 'aktif')
                                     <span class="badge bg-success text-uppercase">Aktif</span>
@@ -64,13 +67,27 @@
                             </td>
                             <td>
                                 <div class="d-flex flex-wrap justify-content-center gap-1">
-                                    <a href="{{ route('perusahaan.show', $perusahaan->id) }}" class="btn btn-info btn-sm">Detail</a>
-                                    <a href="{{ route('perusahaans.edit', $perusahaan->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                    <form action="{{ route('perusahaan.destroy', $perusahaan->id) }}" method="POST" class="d-inline"
+                                    @can('read-profil_perusahaan')
+                                    <a href="{{ route('perusahaans.show', $perusahaan->id) }}" class="btn btn-info btn-sm">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    @endcan
+                                    @can('edit-profil_perusahaan')
+                                    {{-- Tombol Edit --}}
+                                    <a href="{{ route('perusahaans.edit', $perusahaan->id) }}" class="btn btn-warning btn-sm">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+                                    @endcan
+                                    <form action="{{ route('perusahaans.destroy', $perusahaan->id) }}" method="POST" class="d-inline"
                                         onsubmit="return confirm('Yakin ingin menghapus data perusahaan ini?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                        @can('delete-profil_perusahaan')
+                                        {{-- Tombol Hapus --}}
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                        @endcan
                                     </form>
                                 </div>
                             </td>
@@ -109,7 +126,7 @@
                             <p class="mb-1"><strong>Email:</strong> {{ $perusahaan->email }}</p>
                             <p class="mb-1"><strong>Telepon:</strong> {{ $perusahaan->telepon }}</p>
                             <p class="mb-1"><strong>Alamat:</strong> {{ $perusahaan->alamat }}</p>
-                            <p class="mb-1"><strong>Deskripsi:</strong> {{ \Str::limit($perusahaan->deskripsi, 80) }}</p>
+                            <p class="mb-1"><strong>Deskripsi:</strong> {{ \Illuminate\Support\Str::limit($perusahaan->deskripsi, 10, '...') }}</p>
                             <p class="mb-1">
                                 <strong>Status:</strong>
                                 <span class="badge {{ $perusahaan->status === 'aktif' ? 'bg-success' : 'bg-secondary' }}">
@@ -119,13 +136,27 @@
                         </div>
 
                         <div class="d-flex gap-1 mt-2 flex-wrap">
-                            <a href="{{ route('perusahaan.show', $perusahaan->id) }}" class="btn btn-info btn-sm w-100">Detail</a>
-                            <a href="{{ route('perusahaans.edit', $perusahaan->id) }}" class="btn btn-warning btn-sm w-100">Edit</a>
-                            <form action="{{ route('perusahaan.destroy', $perusahaan->id) }}" method="POST" class="w-100"
+                            @can('read-profil_perusahaan')
+                            <a href="{{ route('perusahaans.show', $perusahaan->id) }}" class="btn btn-info btn-sm w-100">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                            @endcan
+                            {{-- Tombol Edit --}}
+                            @can('edit-profil_perusahaan')
+                            <a href="{{ route('perusahaans.edit', $perusahaan->id) }}" class="btn btn-warning btn-sm w-100">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            @endcan
+                            {{-- Tombol Hapus --}}
+                            <form action="{{ route('perusahaans.destroy', $perusahaan->id) }}" method="POST" class="w-100"
                                 onsubmit="return confirm('Yakin ingin menghapus data perusahaan ini?')">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm w-100">Hapus</button>
+                                @can('delete-profil_perusahaan')
+                                <button type="submit" class="btn btn-danger btn-sm w-100">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                                @endcan
                             </form>
                         </div>
                     </div>

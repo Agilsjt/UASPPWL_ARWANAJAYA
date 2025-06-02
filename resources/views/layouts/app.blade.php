@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PT ARWANA JAYA</title>
+  <title>Admin Arwana Jaya</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   @stack('styles')
   <style>
     body {
@@ -173,10 +174,8 @@
   </style>
 </head>
 <body>
-
   <div class="background-image"></div>
 
-  <!-- Hamburger Button -->
   <button id="sidebarShowBtn" aria-label="Show sidebar">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
       <rect y="4" width="24" height="2" rx="1" />
@@ -185,38 +184,55 @@
     </svg>
   </button>
 
-  <!-- Sidebar -->
   <div class="sidebar" id="sidebar">
     <div class="sidebar-header d-flex justify-content-between align-items-center px-3 py-3">
-      <div class="text-white fw-bold fs-5">PT ARWANA JAYA</div>
+      <div class="text-white fw-bold fs-5">{{ $perusahaans->nama_perusahaan ?? 'PT ARWANA JAYA' }}</div>
       <button class="close-btn" id="sidebarToggle" aria-label="Close sidebar"></button>
     </div>
     <nav class="flex-grow-1">
       <ul class="sidebar-menu list-unstyled mb-0">
         <li><a href="{{ route('dashboard') }}" class="{{ Request::routeIs('dashboard') ? 'active' : '' }}">Dashboard</a></li>
-        <li><a href="{{ route('employees.index') }}" class="{{ Request::routeIs('employee.*') ? 'active' : '' }}">Kelola Pegawai</a></li>
-        <li><a href="{{ route('skills.index') }}" class="{{ Request::routeIs('skill.*') ? 'active' : '' }}">Kelola Skill</a></li>
-        <li><a href="{{ route('perusahaans.index') }}" class="{{ Request::routeIs('perusahaan.*') ? 'active' : '' }}">Kelola Profil Perusahaan</a></li>
-        <li><a href="{{ route('layanans.index') }}" class="{{ Request::routeIs('service.*') ? 'active' : '' }}">Kelola Layanan</a></li>
-        <li><a href="{{ route('users.index') }}" class="{{ Request::routeIs('user.*') ? 'active' : '' }}">Kelola User</a></li>
+        <li><a href="{{ route('employees.index') }}" class="{{ Request::routeIs('employees.*') ? 'active' : '' }}">Kelola Pegawai</a></li>
+        <li><a href="{{ route('skills.index') }}" class="{{ Request::routeIs('skills.*') ? 'active' : '' }}">Kelola Skill</a></li>
+        <li><a href="{{ route('perusahaans.index') }}" class="{{ Request::routeIs('perusahaans.*') ? 'active' : '' }}">Kelola Profil Perusahaan</a></li>
+        <li><a href="{{ route('layanans.index') }}" class="{{ Request::routeIs('layanans.*') ? 'active' : '' }}">Kelola Layanan</a></li>
+        <li><a href="{{ route('users.index') }}" class="{{ Request::routeIs('users.*') ? 'active' : '' }}">Kelola User</a></li>
       </ul>
     </nav>
     <div class="sidebar-logout px-3 py-3 mt-auto">
-      <form method="POST" action="{{ route('logout') }}">
-        @csrf
-        <button type="submit" class="logout-btn w-100">Logout</button>
-      </form>
+      <button type="button" class="logout-btn w-100" data-bs-toggle="modal" data-bs-target="#logoutModal">
+        Logout
+      </button>
     </div>
   </div>
 
-  <!-- Main Content -->
   <div class="main-content" id="mainContent">
     <div class="content-wrapper">
       @yield('content')
     </div>
   </div>
+  <!-- Modal Konfirmasi Logout -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white border-light">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logoutModalLabel">Konfirmasi Logout</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body">
+          Apakah Anda yakin ingin logout dari sistem?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+          <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="btn btn-danger">Logout</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <!-- JS -->
   <script>
     const sidebar = document.getElementById('sidebar');
     const mainContent = document.getElementById('mainContent');
@@ -237,5 +253,6 @@
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  @stack('scripts')
 </body>
 </html>

@@ -55,13 +55,13 @@
                                 <div class="d-flex flex-wrap justify-content-center gap-1">
                                     @can('read-layanan')
                                     <a href="{{ route('layanans.show', $layanan->id) }}" class="btn btn-info btn-sm" aria-label="Detail {{ $layanan->nama_layanan }}">
-                                        <i class="bi bi-info-circle"></i> Detail
+                                        <i class="bi bi-eye"></i>
                                     </a>
                                     @endcan
 
                                     @can('edit-layanan')
                                     <a href="{{ route('layanans.edit', $layanan->id) }}" class="btn btn-warning btn-sm" aria-label="Edit {{ $layanan->nama_layanan }}">
-                                        <i class="bi bi-pencil-square"></i> Edit
+                                        <i class="bi bi-pencil-square"></i>
                                     </a>
                                     @endcan
 
@@ -71,7 +71,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">
-                                            <i class="bi bi-trash"></i> Hapus
+                                            <i class="bi bi-trash"></i>
                                         </button>
                                     </form>
                                     @endcan

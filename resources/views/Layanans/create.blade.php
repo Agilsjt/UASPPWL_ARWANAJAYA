@@ -63,7 +63,7 @@
 
                 <div class="d-flex justify-content-between">
                     <a href="{{ route('layanans.index') }}" class="btn btn-outline-light rounded-pill px-4">Batal</a>
-                    <button type="submit" class="btn btn-primary rounded-pill px-4 fw-semibold">Simpan</button>
+                    <button type="submit" class="btn btn-success rounded-pill px-4 fw-semibold">Simpan</button>
                 </div>
             </form>
         </div>

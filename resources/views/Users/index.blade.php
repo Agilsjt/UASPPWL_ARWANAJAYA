@@ -52,17 +52,23 @@
                                 </td>
                                 <td>
                                     @can('read-user')
-                                        <a href="{{ route('users.show', $user->id) }}" class="btn btn-info btn-sm me-1">Detail</a>
+                                        <a href="{{ route('users.show', $user->id) }}" class="btn btn-info btn-sm me-1">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
                                     @endcan
                                     @can('edit-user')
-                                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm me-1">Edit</a>
+                                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm me-1">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </a>
                                     @endcan
                                     @can('delete-user')
                                         <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline"
                                             onsubmit="return confirm('Yakin ingin menghapus user ini?')">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
                                         </form>
                                     @endcan
                                 </td>

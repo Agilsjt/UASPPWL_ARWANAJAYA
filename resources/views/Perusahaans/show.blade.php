@@ -67,7 +67,7 @@
                     </table>
                     <div class="mt-4">
                         <a href="{{ route('perusahaans.edit', $perusahaan->id) }}" class="btn btn-warning me-2 px-4 py-2 fw-semibold rounded-pill shadow-sm btn-action">Edit</a>
-                        <form action="{{ route('perusahaan.destroy', $perusahaan->id) }}" method="POST" class="d-inline"
+                        <form action="{{ route('perusahaans.destroy', $perusahaan->id) }}" method="POST" class="d-inline"
                             onsubmit="return confirm('Apakah Anda yakin ingin menghapus perusahaan ini?')">
                             @csrf
                             @method('DELETE')

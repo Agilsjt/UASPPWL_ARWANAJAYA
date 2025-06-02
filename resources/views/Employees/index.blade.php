@@ -68,11 +68,15 @@
                             <td>
                                 <div class="d-flex flex-wrap justify-content-center gap-1">
                                     @can('read-employee')
-                                    <a href="{{ route('employees.show', $employee->id) }}" class="btn btn-info btn-sm">Detail</a>
+                                    <a href="{{ route('employees.show', $employee->id) }}" class="btn btn-info btn-sm">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
                                     @endcan
 
                                     @can('edit-employee')
-                                    <a href="{{ route('employees.edit', $employee->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="{{ route('employees.edit', $employee->id) }}" class="btn btn-warning btn-sm">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
                                     @endcan
 
                                     @can('delete-employee')
@@ -80,7 +84,9 @@
                                         onsubmit="return confirm('Hapus pegawai ini?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
                                     </form>
                                     @endcan
                                 </div>

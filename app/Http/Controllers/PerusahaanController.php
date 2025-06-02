@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Perusahaan;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -11,6 +12,7 @@ class PerusahaanController extends Controller
     // Menampilkan daftar perusahaan dengan pencarian dan paginasi
     public function index(Request $request)
     {
+        Gate::authorize('read-perusahaan');
         $search = $request->input('search');
 
         $perusahaans = Perusahaan::when($search, function ($query, $search) {
@@ -29,12 +31,14 @@ class PerusahaanController extends Controller
     // Menampilkan form untuk membuat perusahaan baru
     public function create()
     {
+        Gate::authorize('create-perusahaan');
         return view('perusahaans.create');
     }
 
     // Menyimpan data perusahaan baru
     public function store(Request $request)
     {
+        Gate::authorize('create-perusahaan');
         $request->validate([
             'nama_perusahaan' => 'required|string|max:255',
             'judul_deskripsi' => 'nullable|string|max:255',
@@ -60,18 +64,21 @@ class PerusahaanController extends Controller
     // Menampilkan detail perusahaan
     public function show(Perusahaan $perusahaan)
     {
-        return view('perusahaan.show', compact('perusahaan'));
+        Gate::authorize('read-perusahaan');
+        return view('perusahaans.show', compact('perusahaan'));
     }
 
     // Menampilkan form edit perusahaan
     public function edit(Perusahaan $perusahaan)
     {
+        Gate::authorize('edit-perusahaan');
         return view('perusahaans.edit', compact('perusahaan'));
     }
 
     // Memperbarui data perusahaan
     public function update(Request $request, Perusahaan $perusahaan)
     {
+        Gate::authorize('edit-perusahaan');
         $request->validate([
             'nama_perusahaan' => 'required|string|max:255',
             'judul_deskripsi' => 'nullable|string|max:255',
@@ -100,6 +107,7 @@ class PerusahaanController extends Controller
     // Menghapus perusahaan
     public function destroy(Perusahaan $perusahaan)
     {
+        Gate::authorize('delete-perusahaan');
         if ($perusahaan->logo && Storage::disk('public')->exists($perusahaan->logo)) {
             Storage::disk('public')->delete($perusahaan->logo);
         }

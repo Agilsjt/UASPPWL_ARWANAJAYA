@@ -7,12 +7,12 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PerusahaanController;
 use App\Http\Controllers\LayananController;
+use App\Http\Controllers\LandingPageController;
+
 use Illuminate\Support\Facades\Route;
 
 // Route homepage
-Route::get('/', function () {
-    return view('welcome')->with('title', 'Welcome');
-})->name('home');
+Route::get('/', [LandingPageController::class, 'showLandingPage'])->name('home');
 
 // Dashboard route protected by auth and email verification middleware
 Route::get('/dashboard', [DashboardController::class, 'index'])
@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth'])->group(function () {
 
     // Staff-only access
-    Route::middleware(['auth', 'checkrole:staff'])->group(function () {
+    Route::middleware(['auth', 'checkrole:staff|admin'])->group(function () {
         Route::resource('employees', EmployeeController::class)->only(['index']);
         Route::resource('skills', SkillController::class)->only(['index']);
         Route::resource('layanans', LayananController::class)->only(['index']);

@@ -11,7 +11,7 @@ class CheckRole
     public function handle(Request $request, Closure $next, ...$roles)
     {
         if (!Auth::check() || !$request->user()->hasAnyRole($roles)) {
-            abort(403, 'Unauthorized');
+            abort(403, 'Anda tidak memiliki akses ke halaman ini.');
         }
         return $next($request);
     }
